@@ -25,7 +25,7 @@ class GraphModel extends Model
 		$statement = $db->prepare($query);
 		$statement->bindValue('number', $month);
 		$statement->execute();
-		$data = $statement->fetchAll();
+		$data = $statement->fetchAll(); //dd($data);
 		return $data;
 	}
 	

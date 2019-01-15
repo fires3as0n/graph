@@ -25,7 +25,7 @@ class PdoProvider extends ServiceProvider
 	public function register()
 	{
 		$this->app->singleton(PDO::class, function() {
-			$dsn = sprintf("%s:host=%s;port=%s;dbname=%s",
+			$dsn = sprintf("%s:host=%s;port=%s;charset=utf8;dbname=%s",
 				config('database.default'),
 				config('database.connections.mysql.host'),
 				config('database.connections.mysql.port'),

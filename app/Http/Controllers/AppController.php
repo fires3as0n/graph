@@ -39,7 +39,7 @@ class AppController extends Controller
 	
 	public function show($cur_month_number)
 	{
-		$month = GraphModel::pdoGetMonth($cur_month_number);
+		$month = GraphModel::pdoGetMonth($cur_month_number); //dd($month);
 		$users = GraphModel::pdoGetAllUsers();
 		$relations = GraphModel::pdoGetAllRelations(); //dd($relations);
 		
