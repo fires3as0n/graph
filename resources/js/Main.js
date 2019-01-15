@@ -29,7 +29,7 @@ export default function ()
 		const window_width = window.innerWidth;
 
 		const menu_x = cell_x - menu_width/2 + cell_width/2;
-		const menu_y = cell_y - menu_height - 10;
+		const menu_y = cell_y - menu_height - 10 + window.scrollY;
 
 
 		if (menu_x + menu_width > window_width)

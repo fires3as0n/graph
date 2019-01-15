@@ -121,7 +121,7 @@ __webpack_require__.r(__webpack_exports__);
     var menu_width = menu.getBoundingClientRect().width;
     var window_width = window.innerWidth;
     var menu_x = cell_x - menu_width / 2 + cell_width / 2;
-    var menu_y = cell_y - menu_height - 10;
+    var menu_y = cell_y - menu_height - 10 + window.scrollY;
 
     if (menu_x + menu_width > window_width) {
       menu.style.left = window_width - menu_width - 30 + "px";

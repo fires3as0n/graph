@@ -158,7 +158,7 @@ class AppController extends Controller
 	public function generateSubmitted(Request $request)
 	{
 		$data = $request->input("data");
-		$file = base_path() . "\\database\\seeds\\DaysSeederData.txt";
+		$file = base_path() . "/database/seeds/DaysSeederData.txt";
 		$fout = fopen($file, 'w');
 		fwrite($fout, $data);
 		fclose($fout);
