@@ -1,0 +1,42 @@
+[
+	{
+		"id": 1,
+		"name": "Торопов Юрий",
+		"short_name": "Ю",
+		"email": "trobokek@example.com",
+		"password": 1234,
+		"has_image": 0
+  },
+  {
+		"id": 2,
+		"name": "Воробьев Валентин",
+		"short_name": "В",
+		"email": "jral@example.com",
+		"password": 1234,
+		"has_image": 0
+  },
+  {
+		"id": 3,
+		"name": "Зализко Иван",
+		"short_name": "И",
+		"email": "sral@example.com",
+		"password": 1234,
+		"has_image": 0
+  },
+  {
+		"id": 4,
+		"name": "Новиков Александр",
+		"short_name": "А",
+		"email": "eban@example.com",
+		"password": 1234,
+		"has_image": 0
+  },
+  {
+		"id": 5,
+		"name": "Зайцевский Дмитрий",
+		"short_name": "Д",
+		"email": "kek@example.com",
+		"password": 1234,
+		"has_image": 0
+	}
+]
