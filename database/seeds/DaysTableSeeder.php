@@ -11,7 +11,7 @@ class DaysTableSeeder extends Seeder
 	 */
 	public function run()
 	{
-		$path = base_path() . "\\database\\seeds\\DaysSeederData.txt";
+		$path = base_path() . "/database/seeds/DaysSeederData.txt";
 		$file = File::get($path);
 		$data = json_decode($file, true);
 		DB::table('days')->insert($data);
