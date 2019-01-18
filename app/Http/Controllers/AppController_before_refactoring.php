@@ -39,9 +39,9 @@ class AppController extends Controller
 	
 	public function show($cur_month_number)
 	{
-		$month = GraphModel::pdoGetMonth($cur_month_number);
+		$month = GraphModel::pdoGetMonth($cur_month_number); //dd($month);
 		$users = GraphModel::pdoGetAllUsers();
-		$relations = GraphModel::pdoGetAllRelations();
+		$relations = GraphModel::pdoGetAllRelations(); //dd($relations);
 		
 		/* Populating numbers of days */
 		$days = [];
@@ -139,13 +139,15 @@ class AppController extends Controller
 		}
 		
 		$related = [];
+		$related_data = [];
 		foreach ($relations as $relation)
 		{
 			$sign = $relation["user_id"] . "-" . $relation["day_id"];
-			array_push($related, $sign);
+			$related[$relation["id"]] = $sign;
+			$related_data[$relation["id"]] = [ "type" => $relation["relation_type"], "text" => $relation["relation_text"] ];
 		}
 		
-		return view('month', compact('data', 'users', 'related'));
+		return view('month', compact('data', 'users', 'related', 'related_data'));
 	}
 	
 	public function generate()
@@ -156,7 +158,7 @@ class AppController extends Controller
 	public function generateSubmitted(Request $request)
 	{
 		$data = $request->input("data");
-		$file = base_path() . "\\database\\seeds\\DaysSeederData.txt";
+		$file = base_path() . "/database/seeds/DaysSeederData.txt";
 		$fout = fopen($file, 'w');
 		fwrite($fout, $data);
 		fclose($fout);
@@ -170,17 +172,23 @@ class AppController extends Controller
 	public function dayClicked(Request $request)
 	{
 
+		//return var_dump($request->all());
 		$user_id = $request->all()['user_id'];
 		$day_id = $request->all()['day_id'];
+		$relation_type=$request->all()['relation_type'];
+		$payload = $request->all()['payload'];
 		$related = GraphModel::pdoCheckIfRelated($user_id, $day_id);
 
-		if ($related)
+		if ($relation_type == "workday")
 		{
 			$response = GraphModel::pdoDeleteRelation($user_id, $day_id);
 		}
 		else
 		{
-			$response = GraphModel::pdoAddRelation($user_id, $day_id);
+			GraphModel::pdoDeleteRelation($user_id, $day_id);
+			$payload = preg_replace('/\s+/', '', $payload);
+			$payload = mb_substr($payload, 0, 3);
+			$response = GraphModel::pdoAddRelation($user_id, $day_id, $relation_type, $payload);
 		}
 		
 		/* Debug output that counts the number of times this method was called*/
@@ -197,18 +205,7 @@ class AppController extends Controller
 		fwrite($fout, $data);
 		fclose($fout);*/
 		
-		if ($related && $response[0])
-		{
-			return "deleted";
-		}
-		if (!$related && $response[0])
-		{
-			return "added";
-		}
-		if (!$response[0])
-		{
-			return "failed"; //$response[1];
-		}
+		return json_encode($response);
 	}
 	
 

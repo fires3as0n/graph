@@ -1,74 +1,30 @@
 @extends('layout')
 
-{{--{{ dd($data) }}--}}
+{{--{{ dd($cells) }}--}}
 {{--{{ dd($related) }}--}}
 
 @section('content')
-<h2>{{ $data[1][0][5]["month_name"] }}
-	{{ $data[1][0][5]["year"] }}
+<h2>
+	{{ $month_name }}
+	{{ $year }}
 </h2>
 
 
 <div class="container">
 	<div class="row">
-		@for ($table=0; $table<sizeof($data); $table++)
+		@for ($table=0; $table<sizeof($cells); $table++)
 			<div class="col-12 col-sm-6 no-gutters">
 				<table class="table table-bordered">
-					@for ($row=0; $row<sizeof($data[$table]); $row++)
+					@for ($row=0; $row<sizeof($cells[$table]); $row++)
 						<tr>
-							@for($column=0; $column < sizeof($data[$table][$row]); $column++)
+							@for($column=0; $column < sizeof($cells[$table][$row]); $column++)
 								<td
-									{{--Add classes for usernames to use in shrink method--}}
-									@if ($row > 1 && $column == 0)
-										class="u{{$data[$table][$row][$column]['id']}}"
-									@endif
-									{{--Add id, general class and relational class for days--}}
-									@if ($row > 1 && $column > 0)
-										@php
-											$combined_id = $data[$table][$row][0]["id"] . "-" . $data[$table][$row][$column]["id"];
-											$relation_id = array_search($combined_id, $related);
-											$classname; $payload;
-											if (!$relation_id)
-											{
-												$classname = "";
-												$payload = "";
-											}
-											else if ($related_data[$relation_id]["type"] == "offday")
-											{
-												$classname = "offday";
-												$payload = "";
-											}
-											else if ($related_data[$relation_id]["type"] == "halfday")
-											{
-												$classname = "halfday";
-												$payload = "";
-											}
-											else
-											{
-												$classname = "";
-												$payload = $related_data[$relation_id]["text"];
-											}
-										@endphp
-										class="day {{$classname}}"
-										id="d{{$combined_id}}"
+									class="{{$cells[$table][$row][$column]['class']}}"
+									@if ( array_key_exists("id", $cells[$table][$row][$column]) )
+										id="{{$cells[$table][$row][$column]["id"]}}"
 									@endif
 								>
-									{{--Enter usernames into first column--}}
-									@if ($column == 0)
-										{{ $data[$table][$row][$column]["name"] }}
-									@endif
-									{{--Enter day numbers into first row--}}
-									@if ($row == 0 && $column != 0)
-										{{ $data[$table][$row][$column]["day_in_month_number"] }}
-									@endif
-									{{--Enter weekday names into second row--}}
-									@if ($row == 1 && $column != 0)
-										{{ $data[$table][$row][$column]["day_name"] }}
-									@endif
-									{{--Enter payload into days if day and user are related--}}
-									@if ($row > 1 && $column > 0)
-										{{ $payload }}
-									@endif
+									{{$cells[$table][$row][$column]["data"]}}
 								</td>
 							@endfor
 						</tr>
@@ -132,8 +88,20 @@
 	}
 
 	/* Selector using CSS only */
+	.not-current {
+		background-color: rgba(204, 204, 204, 0.1);
+	}
+
 	.offday {
 		background-color: grey;
+	}
+
+	.date.current, .weekday.current {
+		font-weight: bold;
+	}
+
+	.user {
+		font-weight: bold;
 	}
 
 	.halfday {
@@ -225,6 +193,14 @@
 		min-height: 30px;
 		min-width: 30px;
 	}
+
+	.empty {
+		min-height: 30px;
+		min-width: 30px;
+	}
+
+
+
 
 	@media (max-width: 576px) {
 		.day {

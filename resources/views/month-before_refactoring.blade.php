@@ -18,28 +18,56 @@
 						<tr>
 							@for($column=0; $column < sizeof($data[$table][$row]); $column++)
 								<td
+									{{--Add classes for usernames to use in shrink method--}}
 									@if ($row > 1 && $column == 0)
 										class="u{{$data[$table][$row][$column]['id']}}"
 									@endif
+									{{--Add id, general class and relational class for days--}}
 									@if ($row > 1 && $column > 0)
-										class="day"
-										id="d{{ $data[$table][$row][0]["id"] }}-{{$data[$table][$row][$column]["id"]}}"
-										@if ( in_array($data[$table][$row][0]["id"] . "-" . $data[$table][$row][$column]["id"], $related) )
-											style="background-color: grey"
-										@endif
+										@php
+											$combined_id = $data[$table][$row][0]["id"] . "-" . $data[$table][$row][$column]["id"];
+											$relation_id = array_search($combined_id, $related);
+											$classname; $payload;
+											if (!$relation_id)
+											{
+												$classname = "";
+												$payload = "";
+											}
+											else if ($related_data[$relation_id]["type"] == "offday")
+											{
+												$classname = "offday";
+												$payload = "";
+											}
+											else if ($related_data[$relation_id]["type"] == "halfday")
+											{
+												$classname = "halfday";
+												$payload = "";
+											}
+											else
+											{
+												$classname = "";
+												$payload = $related_data[$relation_id]["text"];
+											}
+										@endphp
+										class="day {{$classname}}"
+										id="d{{$combined_id}}"
 									@endif
 								>
+									{{--Enter usernames into first column--}}
 									@if ($column == 0)
 										{{ $data[$table][$row][$column]["name"] }}
 									@endif
+									{{--Enter day numbers into first row--}}
 									@if ($row == 0 && $column != 0)
 										{{ $data[$table][$row][$column]["day_in_month_number"] }}
 									@endif
+									{{--Enter weekday names into second row--}}
 									@if ($row == 1 && $column != 0)
 										{{ $data[$table][$row][$column]["day_name"] }}
 									@endif
-									@if ($row > 1 && $column != 0)
-										{{ "" }}
+									{{--Enter payload into days if day and user are related--}}
+									@if ($row > 1 && $column > 0)
+										{{ $payload }}
 									@endif
 								</td>
 							@endfor
@@ -48,29 +76,6 @@
 				</table>
 			</div>
 		@endfor
-	</div>
-</div>
-
-<div id="selector-1" class="container">
-	<div class="row">
-    <div class="col-2 align-middle">
-    	<img class=" align-middle" src="/img/dark_rectangle.jpg" />
-		</div>
-		<div class="col-2 align-middle">
-   		<img class=" align-middle" src="/img/light_thin_rectangle.jpg" />
-    </div>
-    <div class="col-2 align-middle">
-    	<img class=" align-middle" src="/img/stroke_thin_rectangle.jpg" />
-    </div>
-    <div class="col-2 align-middle a">
-    	ОБ
-    </div>
-    <div class="col-2 align-middle a">
-    	Б
-    </div>
-    <div class="col-2 align-middle a">
-    	Р
-    </div>
 	</div>
 </div>
 
@@ -127,6 +132,20 @@
 	}
 
 	/* Selector using CSS only */
+	.offday {
+		background-color: grey;
+	}
+
+	.halfday {
+  	background: repeating-linear-gradient(
+			-45deg,
+			transparent,
+			transparent 5px,
+			grey 5px,
+			grey 7px
+ 	 );
+	}
+
 
 	#selector-2 {
 		margin: 0 auto;
@@ -137,7 +156,10 @@
 		border: 1px solid grey;
 		border-radius: 5px;
 		padding: 0;
-		position: relative;
+		position: absolute;
+		background-color: white;
+		display: none;
+		box-shadow: 0px 0px 1px 1px rgba(100, 149, 247 , 0.9);
 	}
 
 	#selector-2 div {
@@ -193,6 +215,11 @@
 		/*text-shadow: 2px 2px 2px rgba(100, 149, 247 , 0.5);*/
 	}
 
+	.day:hover {
+		border: 2px solid cornflowerblue;
+		/*z-index: 100;*/
+	}
+
 
 	.day {
 		min-height: 30px;
@@ -226,10 +253,7 @@
 		transition: all .05s;
 	}
 
-	.day:hover {
-		border: 2px solid cornflowerblue;
-		z-index: 100;
-	}
+
 
 	td {
 		text-align: center;
