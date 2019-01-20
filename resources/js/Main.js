@@ -1,99 +1,68 @@
 export default function ()
 {
-	const days = Array.from(document.querySelectorAll(".day"));
-	for (let day of days)
-	{
+	const days = document.querySelectorAll(".day.current, .day.not-current");
+	days.forEach( day => {
 		day.addEventListener('click', handleDayClick);
-	}
+	});
 
-	let prev_day;
-
+	let day;
 	function handleDayClick(e)
 	{
-		if (!prev_day)
-			prev_day = this;
-		prev_day.style.border = null;
-		prev_day.style.boxShadow = null;
-		prev_day = this;
 
-		handleButtonClick.cell = this;
-		this.style.border = "3px solid cornflowerblue";
-		this.style.boxShadow = "0px 0px 4px 3px rgba(100, 149, 247 , 1)";
+		if (!day)
+			day = this;
+		if (this.classList.contains('clicked'))
+		{
+			this.classList.remove('clicked');
+			selector.style.display = "none";
+			return;
+		}
 
-		menu.style.display = "block";
+		day.classList.remove('clicked');
+		day = this;
+		this.classList.add('clicked');
+		selector.style.display = "flex";
+
+		const parent_table = this.parentNode.parentNode.getBoundingClientRect();
 		const cell_x = this.getBoundingClientRect().x;
 		const cell_y = this.getBoundingClientRect().y;
 		const cell_width = this.getBoundingClientRect().width;
-		const menu_height = menu.getBoundingClientRect().height;
-		const menu_width = menu.getBoundingClientRect().width;
+		const selector_height = selector.getBoundingClientRect().height;
+		const selector_width = selector.getBoundingClientRect().width;
 		const window_width = window.innerWidth;
 
-		const menu_x = cell_x - menu_width/2 + cell_width/2;
-		const menu_y = cell_y - menu_height - 10 + window.scrollY;
+		const selector_x = cell_x - selector_width/2 + cell_width/2;
+		const selector_y = cell_y - selector_height - 20 + window.scrollY;
 
-
-		if (menu_x + menu_width > window_width)
+		if (selector_x + selector_width > window_width)
 		{
-			menu.style.left = window_width - menu_width - 30 + "px";
+			selector.style.left = parent_table.left +
+				parent_table.width - selector_width + "px";
 		}
-		else if (menu_x < 0)
+		else if (selector_x < 0)
 		{
-			menu.style.left = 15+"px";
+			selector.style.left = parent_table.left + "px";
 		}
 		else
 		{
-			menu.style.left = menu_x+"px";
+			selector.style.left = selector_x + "px";
 		}
-		menu.style.top = menu_y+"px";
+		selector.style.top = selector_y + "px";
 	}
 
-	function handleResponse()
-	{
-		const response_code = JSON.parse(this.responseText)[0];
-		menu.style.display = "none";
-		handleResponse.cell.style.border = null;
-		handleResponse.cell.style.boxShadow = null;
-
-		const type = handleResponse.button.getAttribute('data-relation');
-		if (response_code == true)
-		{
-			if (type == "offday")
-			{
-		 		handleResponse.cell.classList.add('offday');
-			}
-			else if (type == "halfday")
-			{
-		 		handleResponse.cell.classList.add('halfday');
-			}
-			else
-			{
-				handleResponse.cell.classList.remove('halfday');
-				handleResponse.cell.classList.remove('offday');
-			}
-			handleResponse.cell.textContent = handleResponse.payload;
-		}
-
-
-
-	}
-
-	const buttons = document.querySelectorAll('#selector-2 div');
+	const selector = document.querySelector('#selector');
+	const buttons = selector.querySelectorAll('div');
 	buttons.forEach( button => {
 		button.addEventListener('click', handleButtonClick)
 	});
 
+	let button;
+	let payload;
 	function handleButtonClick()
 	{
-		if (this.getAttribute('data-relation') == "close")
-		{
-			menu.style.display = "none";
-			handleButtonClick.cell.style.border = null;
-			handleButtonClick.cell.style.boxShadow = null;
-			return;
-		}
+		button = this;
 
-		let payload;
-		if (this.getAttribute('data-relation') == "customday")
+		if (this.getAttribute('data-relation') === "customday")
 		{
 			payload = prompt("Custom status:").replace(/\s/g,'').slice(0, 3);
 
@@ -102,19 +71,24 @@ export default function ()
 				return
 			}
 		}
+		else if (this.getAttribute('data-relation') === "objday")
+		{
+			payload = "ОБ";
+		}
+		else if (this.getAttribute('data-relation') === "illday")
+		{
+			payload = "Б";
+		}
 		else
 		{
-			payload = this.textContent.replace(/\s/g,'').slice(0, 3);
+			payload = "";
 		}
 
 		const ajax = new XMLHttpRequest();
 		ajax.onload = handleResponse;
-		handleResponse.cell = handleButtonClick.cell;
-		handleResponse.button = this;
-		handleResponse.payload = payload;
 
 		const regex = new RegExp('[\\d]+', 'gi' );
-		const match = handleButtonClick.cell.id.match(regex);
+		const match = day.id.match(regex);
 		const user_id = match[0];
 		const day_id = match[1];
 
@@ -123,8 +97,45 @@ export default function ()
 		ajax.send(`user_id=${user_id}&day_id=${day_id}&relation_type=${this.getAttribute('data-relation')}&payload=${payload}`);
 	}
 
-	const menu = document.querySelector('#selector-2');
+	function handleResponse()
+	{
+		selector.style.display = "none";
+		day.classList.remove('clicked');
 
+		/*
+		If successfully added/deleted relation, change current day style according
+		to format that corresponds to its new relation status.
+		If relation was not added - log the database error (looks like should
+		be considered unsafe in production though)
+		 */
+		const response_code = JSON.parse(this.responseText)[0];
+		const relation_type = button.getAttribute('data-relation');
+		if (response_code == true)
+		{
+			/*
+			First remove any extra classes that day can have, because when adding
+			new relation, the previous one is deleted
+			 */
+			day.classList.remove('halfday');
+			day.classList.remove('offday');
 
+			if (relation_type == "offday")
+			{
+		 		day.classList.add('offday');
+			}
+			else if (relation_type == "halfday")
+			{
+		 		day.classList.add('halfday');
+			}
 
+			/*
+			Payload is inserted directly from JS, the same one that was sent to the
+			server. Server does not respond with the payload it actually added, so
+			this can be a little error-prone, but reduces the amount of information
+			sent in AJAX API call.
+			*/
+			day.textContent = payload;
+		}
+
+	}
 }

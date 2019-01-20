@@ -94,7 +94,7 @@ class AppController extends Controller
 		}
 		else if($day["type"] == "empty")
 		{
-			$class = "empty not-current";
+			$class = $base_class . " empty";
 		}
 		else
 		{

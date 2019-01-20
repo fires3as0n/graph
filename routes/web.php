@@ -1,7 +1,7 @@
 <?php
 //
 Route::get('/', 'AppController@index');
-Route::get('/months/{month}', 'AppController@show');
+Route::get('/months/{month}', 'AppController@show')->middleware('auth');
 Route::get('/generate', 'AppController@generate');
 Route::post('/generate', 'AppController@generateSubmitted');
 
@@ -13,3 +13,8 @@ Route::post('/generate', 'AppController@generateSubmitted');
 
 
 
+
+Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout');
+
+Route::get('/home', 'HomeController@index')->name('home');

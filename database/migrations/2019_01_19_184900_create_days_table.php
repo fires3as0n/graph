@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateDaysTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -13,16 +13,15 @@ class CreateUsersTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('users', function (Blueprint $table)
+		Schema::create('days', function (Blueprint $table)
 		{
 			$table->integer('id')->unsigned()->autoIncrement()->nullable($value = false);
-			$table->string('name');
-			$table->string('short_name');
-			$table->string('email')->unique();
-			$table->string('password', 255);
-			$table->rememberToken();
-			$table->timestamps();
-			$table->boolean('has_image')->default(false);
+			$table->integer('day_in_month_number');
+			$table->integer('day_in_week_number');
+			$table->char('day_name', 45);
+			$table->integer('month_number');
+			$table->char('month_name', 45);
+			$table->char('year', 45);
 		});
 	}
 	
@@ -33,6 +32,6 @@ class CreateUsersTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('users');
+		Schema::dropIfExists('days');
 	}
 }

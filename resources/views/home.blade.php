@@ -1,5 +1,5 @@
 {{--{{ dd(get_defined_vars()['__data']) }}--}}
-@extends('layout')
+@extends('layouts.app')
 
 
 

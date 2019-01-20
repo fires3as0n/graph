@@ -1,10 +1,9 @@
 export default function ()
 {
-	const days = Array.from(document.querySelectorAll(".day"));
-	for (let day of days)
-	{
+	const days = document.querySelectorAll(".day.current, .day.not-current");
+	days.forEach( day => {
 		day.addEventListener('click', handleDayClick);
-	}
+	});
 
 	let prev_day;
 
@@ -12,7 +11,7 @@ export default function ()
 	{
 		if (!prev_day)
 			prev_day = this;
-		prev_day.style.border = null;
+		prev_day.style.outline = null;
 		prev_day.style.boxShadow = null;
 		prev_day = this;
 

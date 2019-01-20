@@ -18,7 +18,7 @@ export default function ()
 	//console.log(fields);
 
 	let shortened = false;
-	if (window.innerWidth < 810)
+	if (window.innerWidth < 850)
 		transformNames("short_name");
 
 	function transformNames(name_type)
@@ -58,9 +58,9 @@ export default function ()
 	function handleNames()
 	{
 		//console.log(window.innerWidth);
-		if (window.innerWidth < 810 && !shortened)
+		if (window.innerWidth < 850 && !shortened)
 			transformNames("short_name");
-		else if (window.innerWidth >= 810 && shortened)
+		else if (window.innerWidth >= 850 && shortened)
 			transformNames("name");
 	}
 }

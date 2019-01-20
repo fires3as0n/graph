@@ -96,97 +96,75 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  var days = Array.from(document.querySelectorAll(".day"));
-
-  for (var _i = 0; _i < days.length; _i++) {
-    var day = days[_i];
+  var days = document.querySelectorAll(".day.current, .day.not-current");
+  days.forEach(function (day) {
     day.addEventListener('click', handleDayClick);
-  }
-
-  var prev_day;
+  });
+  var day;
 
   function handleDayClick(e) {
-    if (!prev_day) prev_day = this;
-    prev_day.style.border = null;
-    prev_day.style.boxShadow = null;
-    prev_day = this;
-    handleButtonClick.cell = this;
-    this.style.border = "3px solid cornflowerblue";
-    this.style.boxShadow = "0px 0px 4px 3px rgba(100, 149, 247 , 1)";
-    menu.style.display = "block";
-    var cell_x = this.getBoundingClientRect().x;
-    var cell_y = this.getBoundingClientRect().y;
-    var cell_width = this.getBoundingClientRect().width;
-    var menu_height = menu.getBoundingClientRect().height;
-    var menu_width = menu.getBoundingClientRect().width;
-    var window_width = window.innerWidth;
-    var menu_x = cell_x - menu_width / 2 + cell_width / 2;
-    var menu_y = cell_y - menu_height - 10 + window.scrollY;
+    if (!day) day = this;
 
-    if (menu_x + menu_width > window_width) {
-      menu.style.left = window_width - menu_width - 30 + "px";
-    } else if (menu_x < 0) {
-      menu.style.left = 15 + "px";
-    } else {
-      menu.style.left = menu_x + "px";
-    }
-
-    menu.style.top = menu_y + "px";
-  }
-
-  function handleResponse() {
-    var response_code = JSON.parse(this.responseText)[0];
-    menu.style.display = "none";
-    handleResponse.cell.style.border = null;
-    handleResponse.cell.style.boxShadow = null;
-    var type = handleResponse.button.getAttribute('data-relation');
-
-    if (response_code == true) {
-      if (type == "offday") {
-        handleResponse.cell.classList.add('offday');
-      } else if (type == "halfday") {
-        handleResponse.cell.classList.add('halfday');
-      } else {
-        handleResponse.cell.classList.remove('halfday');
-        handleResponse.cell.classList.remove('offday');
-      }
-
-      handleResponse.cell.textContent = handleResponse.payload;
-    }
-  }
-
-  var buttons = document.querySelectorAll('#selector-2 div');
-  buttons.forEach(function (button) {
-    button.addEventListener('click', handleButtonClick);
-  });
-
-  function handleButtonClick() {
-    if (this.getAttribute('data-relation') == "close") {
-      menu.style.display = "none";
-      handleButtonClick.cell.style.border = null;
-      handleButtonClick.cell.style.boxShadow = null;
+    if (this.classList.contains('clicked')) {
+      this.classList.remove('clicked');
+      selector.style.display = "none";
       return;
     }
 
-    var payload;
+    day.classList.remove('clicked');
+    day = this;
+    this.classList.add('clicked');
+    selector.style.display = "flex";
+    var parent_table = this.parentNode.parentNode.getBoundingClientRect();
+    var cell_x = this.getBoundingClientRect().x;
+    var cell_y = this.getBoundingClientRect().y;
+    var cell_width = this.getBoundingClientRect().width;
+    var selector_height = selector.getBoundingClientRect().height;
+    var selector_width = selector.getBoundingClientRect().width;
+    var window_width = window.innerWidth;
+    var selector_x = cell_x - selector_width / 2 + cell_width / 2;
+    var selector_y = cell_y - selector_height - 20 + window.scrollY;
 
-    if (this.getAttribute('data-relation') == "customday") {
+    if (selector_x + selector_width > window_width) {
+      selector.style.left = parent_table.left + parent_table.width - selector_width + "px";
+    } else if (selector_x < 0) {
+      selector.style.left = parent_table.left + "px";
+    } else {
+      selector.style.left = selector_x + "px";
+    }
+
+    selector.style.top = selector_y + "px";
+  }
+
+  var selector = document.querySelector('#selector');
+  var buttons = selector.querySelectorAll('div');
+  buttons.forEach(function (button) {
+    button.addEventListener('click', handleButtonClick);
+  });
+  var button;
+  var payload;
+
+  function handleButtonClick() {
+    button = this;
+
+    if (this.getAttribute('data-relation') === "customday") {
       payload = prompt("Custom status:").replace(/\s/g, '').slice(0, 3);
 
       if (payload === null || payload === "") {
         return;
       }
+    } else if (this.getAttribute('data-relation') === "objday") {
+      payload = "ОБ";
+    } else if (this.getAttribute('data-relation') === "illday") {
+      payload = "Б";
     } else {
-      payload = this.textContent.replace(/\s/g, '').slice(0, 3);
+      payload = "";
     }
 
     var ajax = new XMLHttpRequest();
     ajax.onload = handleResponse;
-    handleResponse.cell = handleButtonClick.cell;
-    handleResponse.button = this;
-    handleResponse.payload = payload;
     var regex = new RegExp('[\\d]+', 'gi');
-    var match = handleButtonClick.cell.id.match(regex);
+    var match = day.id.match(regex);
     var user_id = match[0];
     var day_id = match[1];
     ajax.open('POST', '/api/months', true);
@@ -194,7 +172,43 @@ __webpack_require__.r(__webpack_exports__);
     ajax.send("user_id=".concat(user_id, "&day_id=").concat(day_id, "&relation_type=").concat(this.getAttribute('data-relation'), "&payload=").concat(payload));
   }
 
-  var menu = document.querySelector('#selector-2');
+  function handleResponse() {
+    selector.style.display = "none";
+    day.classList.remove('clicked');
+    /*
+    If successfully added/deleted relation, change current day style according
+    to format that corresponds to its new relation status.
+    If relation was not added - log the database error (looks like should
+    be considered unsafe in production though)
+     */
+
+    var response_code = JSON.parse(this.responseText)[0];
+    var relation_type = button.getAttribute('data-relation');
+
+    if (response_code == true) {
+      /*
+      First remove any extra classes that day can have, because when adding
+      new relation, the previous one is deleted
+       */
+      day.classList.remove('halfday');
+      day.classList.remove('offday');
+
+      if (relation_type == "offday") {
+        day.classList.add('offday');
+      } else if (relation_type == "halfday") {
+        day.classList.add('halfday');
+      }
+      /*
+      Payload is inserted directly from JS, the same one that was sent to the
+      server. Server does not respond with the payload it actually added, so
+      this can be a little error-prone, but reduces the amount of information
+      sent in AJAX API call.
+      */
+
+
+      day.textContent = payload;
+    }
+  }
 });
 
 /***/ }),
@@ -246,7 +260,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
   var shortened = false;
-  if (window.innerWidth < 810) transformNames("short_name");
+  if (window.innerWidth < 850) transformNames("short_name");
 
   function transformNames(name_type) {
     for (var i = 0; i < users.length; i++) {
@@ -275,7 +289,7 @@ __webpack_require__.r(__webpack_exports__);
 
   function handleNames() {
     //console.log(window.innerWidth);
-    if (window.innerWidth < 810 && !shortened) transformNames("short_name");else if (window.innerWidth >= 810 && shortened) transformNames("name");
+    if (window.innerWidth < 850 && !shortened) transformNames("short_name");else if (window.innerWidth >= 850 && shortened) transformNames("name");
   }
 });
 

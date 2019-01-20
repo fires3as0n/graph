@@ -13,6 +13,7 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/generate.js', 'public/js')
 	 .js('resources/js/month.js', 'public/js')
+	 .styles('resources/css/month.css', 'public/css/month.css')
 	 .browserSync({
 	  	proxy: '127.0.0.1:8001',
 	  	open: false

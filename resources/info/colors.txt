@@ -1,0 +1,8 @@
+buttons in selector
+rgb(33, 36, 41)
+#212429
+
+Shadow and outline on selected elements
+rgb(100, 149, 247)
+#6495f7
+cornflowerblue

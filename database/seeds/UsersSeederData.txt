@@ -28,7 +28,7 @@
 		"name": "Новиков Александр",
 		"short_name": "А",
 		"email": "eban@example.com",
-		"password": 1234,
+		"password": Hash::make('1234'),
 		"has_image": 1
   },
   {
