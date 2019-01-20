@@ -108,7 +108,17 @@ export default function ()
 		If relation was not added - log the database error (looks like should
 		be considered unsafe in production though)
 		 */
-		const response_code = JSON.parse(this.responseText)[0];
+		let response_code;
+		try
+		{
+			response_code = JSON.parse(this.responseText)[0];
+		}
+		catch(e)
+		{
+			console.error(e);
+			console.error(this.responseText);
+			return;
+		}
 		const relation_type = button.getAttribute('data-relation');
 		if (response_code == true)
 		{

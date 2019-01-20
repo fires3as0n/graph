@@ -169,7 +169,7 @@ class AppController extends Controller
 		$users = GraphModel::pdoGetAllUsers(); //dd($users);
 		$relations = GraphModel::pdoGetAllRelations(); //dd($relations);
 		
-		$month_name = $month[0]["month_name"];
+		$month_name = $month[0]["month_name"]; //dd($month_name);
 		$year = $month[0]["year"];
 		
 		/* Populating days */

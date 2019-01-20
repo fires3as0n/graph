@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\GraphModel;
 use Illuminate\Support\Facades\Redirect;
 
-class AppController extends Controller
+lass AppController extends Controller
 {
 	public function index()
 	{

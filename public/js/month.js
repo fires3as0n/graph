@@ -182,7 +182,16 @@ __webpack_require__.r(__webpack_exports__);
     be considered unsafe in production though)
      */
 
-    var response_code = JSON.parse(this.responseText)[0];
+    var response_code;
+
+    try {
+      response_code = JSON.parse(this.responseText)[0];
+    } catch (e) {
+      console.error(e);
+      console.error(this.responseText);
+      return;
+    }
+
     var relation_type = button.getAttribute('data-relation');
 
     if (response_code == true) {
@@ -320,7 +329,7 @@ Object(_Main_js__WEBPACK_IMPORTED_MODULE_1__["default"])();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\Code\Graph\resources\js\month.js */"./resources/js/month.js");
+module.exports = __webpack_require__(/*! /home/argos/Code/graph/resources/js/month.js */"./resources/js/month.js");
 
 
 /***/ })

@@ -17,4 +17,4 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
-Route::post('/months', 'AppController@dayClicked');
+Route::post('/months', 'AppController@dayClicked')->middleware('auth');
