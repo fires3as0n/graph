@@ -5,3 +5,14 @@
 .logo {
 	padding-top: 12px;
 }
+
+.remember {
+	/*margin-left: 100px;*/
+}
+
+@media (min-width: 720px) and (max-width: 960px)
+{
+	.remember-custom {
+		margin-left: 20px;
+	}
+}

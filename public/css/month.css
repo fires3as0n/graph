@@ -169,3 +169,8 @@
 		contrast(85%);
 }
 /* End Selector */
+
+.btn-primary {
+	background-color: #387fed;
+	border-color: #387fed;
+}

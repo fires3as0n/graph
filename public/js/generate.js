@@ -101,10 +101,13 @@ function generateDaysJson(year, id) {
   var now = new Date();
   /*Use offset to create a number used for making	real time
   This helps to overcome bug in JS Date object
-  	In oder to get real time, always pass offset
+  
+  In oder to get real time, always pass offset
   instead of hours and then add the desired time
-  	offset variable represents 0:00 time for current time zone
-  	-Usage
+  
+  offset variable represents 0:00 time for current time zone
+  
+  -Usage
   To get: 1970.01.01-04:00
   Pass: Date(1970, 0, 1, offset + 4)
   -Yes, in this shit language months counts from 0
@@ -218,7 +221,7 @@ function waitForResult() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/argos/Code/graph/resources/js/generate.js */"./resources/js/generate.js");
+module.exports = __webpack_require__(/*! E:\Code\Graph\resources\js\generate.js */"./resources/js/generate.js");
 
 
 /***/ })
