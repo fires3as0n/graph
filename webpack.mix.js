@@ -16,6 +16,7 @@ mix.js('resources/js/generate.js', 'public/js')
 	 .js('resources/js/app.js', 'public/js')
 	 .styles('resources/css/month.css', 'public/css/month.css')
 	 .styles('resources/css/layout.css', 'public/css/layout.css')
+	 .styles('resources/css/auth.css', 'public/css/auth.css')
 	 .browserSync({
 	  	proxy: '127.0.0.1:8001',
 	  	open: false

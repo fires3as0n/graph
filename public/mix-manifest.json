@@ -3,5 +3,6 @@
     "/js/generate.js": "/js/generate.js",
     "/js/month.js": "/js/month.js",
     "/css/month.css": "/css/month.css",
-    "/css/layout.css": "/css/layout.css"
+    "/css/layout.css": "/css/layout.css",
+    "/css/auth.css": "/css/auth.css"
 }

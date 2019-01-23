@@ -2,12 +2,15 @@
 //
 Route::get('/', 'AppController@index');
 Route::get('/{year}/{month}', 'AppController@show')->middleware('auth');
+Route::post('/months', 'AppController@dayClicked')->middleware('auth');
+
+Route::get('/settings', 'AppController@settings')->middleware('auth');
+
 Route::get('/generate', 'AppController@generate');
 Route::post('/generate', 'AppController@generateSubmitted');
 
 
-Route::get('/logout', 'Auth\LoginController@logout');
-Route::post('/months', 'AppController@dayClicked')->middleware('auth');
+
 
 /* Manual Authorisation Routes */
 

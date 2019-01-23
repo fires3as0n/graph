@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "0d587cfddb43b67d104a9a21568d2468",
@@ -748,16 +748,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.7.21",
+            "version": "v5.7.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "25f74458a242b61cc9e9c09d31f94fb13ed805f3"
+                "reference": "64a7749bd9e8df68addce1d01a54bcf606141f29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/25f74458a242b61cc9e9c09d31f94fb13ed805f3",
-                "reference": "25f74458a242b61cc9e9c09d31f94fb13ed805f3",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/64a7749bd9e8df68addce1d01a54bcf606141f29",
+                "reference": "64a7749bd9e8df68addce1d01a54bcf606141f29",
                 "shasum": ""
             },
             "require": {
@@ -890,7 +890,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-01-15T15:20:32+00:00"
+            "time": "2019-01-22T15:08:35+00:00"
         },
         {
             "name": "laravel/nexmo-notification-channel",
@@ -951,19 +951,20 @@
         },
         {
             "name": "laravel/passport",
-            "version": "v7.0.5",
+            "version": "v7.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/passport.git",
-                "reference": "d7f24f6d4e95049b04369d60596d7a5b619a1dc9"
+                "reference": "b0c0dcbb8d7d61ba814b1e2cb404dbb4e1d8a852"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/passport/zipball/d7f24f6d4e95049b04369d60596d7a5b619a1dc9",
-                "reference": "d7f24f6d4e95049b04369d60596d7a5b619a1dc9",
+                "url": "https://api.github.com/repos/laravel/passport/zipball/b0c0dcbb8d7d61ba814b1e2cb404dbb4e1d8a852",
+                "reference": "b0c0dcbb8d7d61ba814b1e2cb404dbb4e1d8a852",
                 "shasum": ""
             },
             "require": {
+                "ext-json": "*",
                 "firebase/php-jwt": "~3.0|~4.0|~5.0",
                 "guzzlehttp/guzzle": "~6.0",
                 "illuminate/auth": "~5.6",
@@ -1016,7 +1017,7 @@
                 "oauth",
                 "passport"
             ],
-            "time": "2019-01-02T10:25:07+00:00"
+            "time": "2019-01-22T14:41:41+00:00"
         },
         {
             "name": "laravel/slack-notification-channel",
@@ -3002,7 +3003,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",

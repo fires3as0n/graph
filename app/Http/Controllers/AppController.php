@@ -274,6 +274,11 @@ class AppController extends Controller
 		return view('generate');
 	}
 	
+	public function settings()
+	{
+		return view('auth.settings');
+	}
+	
 	/*
 	====== API controllers ======
 	*/

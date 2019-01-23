@@ -10,12 +10,15 @@
 
 	<link rel="apple-touch-icon" sizes="128x128" href="/img/icon.jpg">
 
+	{{--Bootstrap--}}
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/fontawesome/css/all.css"/>
-	<link rel="stylesheet" href="/css/layout.css">
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="/fontawesome/css/all.css"/>
+	<link rel="stylesheet" href="/css/layout.css">
+
 
 	@yield('CSS')
 
@@ -60,15 +63,12 @@
 <div class="personal container">
 
 	<div>
-		<button class="btn btn-link" form="logout">ЛК</button>
-		<form id="logout" method="post" action="/logout">
-			{{ csrf_field() }}
-		</form>
+		<a href="/settings" class="btn btn-link">Настройки</a>
 	</div>
 
 
 	<div>
-		<button class="btn btn-link" form="logout">Logout</button>
+		<input value="Выход" type="submit" class="btn btn-link" form="logout" />
 		<form id="logout" method="post" action="/logout">
 			{{ csrf_field() }}
 		</form>
