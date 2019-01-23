@@ -1,4 +1,8 @@
-<!doctype html>
+@php
+	$months = ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+@endphp
+
+	<!doctype html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -8,27 +12,69 @@
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/fontawesome/css/all.css"/>
+	<link rel="stylesheet" href="/css/layout.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
 	@yield('CSS')
 
 	@yield('head_JS')
-	<title>Graphic app </title>
+	<title>График</title>
 </head>
 
 <body>
-<h1>Graphic app</h1>
 
-<ul class="nav">
-<li class="nav-item">
-	<a class="nav-link" href="/">Graphic</a>
-</li>
-<li class="nav-item">
-	<a class="nav-link" href="/generate">Generate DB seed</a>
-</li>
-</ul>
+<div class="menu">
 
+	<div class="dropdown">
+		<button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			{{ $month_name }}
+		</button>
+
+		<div class="dropdown-menu">
+			@for($i=0;$i<12;$i++)
+				<a class="dropdown-item" href="/{{$year}}/{{$i+1}}">{{$months[$i]}}</a>
+			@endfor
+		</div>
+	</div>
+
+	<div class="dropdown">
+		<button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			{{ $year }}
+		</button>
+
+		<div class="dropdown-menu">
+			@for($i=2019;$i<2026;$i++)
+				<a class="dropdown-item" href="/{{$i}}/{{$month_number}}">{{$i}}</a>
+			@endfor
+		</div>
+	</div>
+
+</div>
 
 @yield('content')
 
+<a class="generate" href="/generate">Generate DB seed</a>
+
+<div class="personal container">
+
+	<div>
+		<button class="btn btn-link" form="logout">ЛК</button>
+		<form id="logout" method="post" action="/logout">
+			{{ csrf_field() }}
+		</form>
+	</div>
+
+
+	<div>
+		<button class="btn btn-link" form="logout">Logout</button>
+		<form id="logout" method="post" action="/logout">
+			{{ csrf_field() }}
+		</form>
+	</div>
+
+</div>
 @yield('foot_JS')
 </body>
 </html>

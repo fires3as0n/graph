@@ -96,15 +96,18 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return generateDaysJson; });
-function generateDaysJson(year) {
+function generateDaysJson(year, id) {
   /*get local date*/
   var now = new Date();
   /*Use offset to create a number used for making	real time
   This helps to overcome bug in JS Date object
-  	In oder to get real time, always pass offset
+  
+  In oder to get real time, always pass offset
   instead of hours and then add the desired time
-  	offset variable represents 0:00 time for current time zone
-  	-Usage
+  
+  offset variable represents 0:00 time for current time zone
+  
+  -Usage
   To get: 1970.01.01-04:00
   Pass: Date(1970, 0, 1, offset + 4)
   -Yes, in this shit language months counts from 0
@@ -130,7 +133,7 @@ function generateDaysJson(year) {
     days_in_month[1] += 1;
   }
 
-  var week_day_names = ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"];
+  var week_day_names = ["", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"];
   var month_names = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
   var result = Array();
 
@@ -138,19 +141,19 @@ function generateDaysJson(year) {
     for (var day = 0; day < days_in_month[month]; day++, iterator++) {
       var obj = {};
       var date = new Date(year, month, day + 1, offset);
-      obj["id"] = iterator + 1;
-      obj["day_in_week_number"] = date.getDay() + 1;
+      obj["id"] = id + iterator + 1;
+      obj["day_in_week_number"] = date.getDay() == 0 ? 7 : date.getDay();
       obj["day_in_month_number"] = day + 1;
-      obj["day_name"] = week_day_names[date.getDay()];
+      obj["day_name"] = week_day_names[obj["day_in_week_number"]];
       obj["month_number"] = month + 1;
       obj["month_name"] = month_names[month];
       obj["year"] = year;
-      result[iterator] = obj; //break;
-    } //break;
+      result[iterator] = obj;
+    }
+  } //console.table(result);
 
-  }
 
-  return JSON.stringify(result);
+  return [result, result.length];
 }
 
 /***/ }),
@@ -174,6 +177,9 @@ button.addEventListener('click', submitHandler);
 
 function submitHandler() {
   waitForResult().then(function (result) {
+    console.table(result);
+    result = JSON.stringify(result); //console.log(result);
+
     data_field.value = result;
     form.submit();
   });
@@ -181,7 +187,16 @@ function submitHandler() {
 
 function waitForResult() {
   return new Promise(function (resolve, reject) {
-    resolve(Object(_DaysJsonGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(input.value));
+    var result = Array();
+    var id = 0;
+
+    for (var i = 2019; i < 2026; i++) {
+      var response = Object(_DaysJsonGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(i, id);
+      id += response[1];
+      result = result.concat(response[0]);
+    }
+
+    resolve(result);
   });
 } //<editor-fold desc="Promise testing function">
 //function waitForResult(value)
@@ -206,7 +221,7 @@ function waitForResult() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/argos/Code/graph/resources/js/generate.js */"./resources/js/generate.js");
+module.exports = __webpack_require__(/*! E:\Code\Graph\resources\js\generate.js */"./resources/js/generate.js");
 
 
 /***/ })

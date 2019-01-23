@@ -11,15 +11,27 @@ function submitHandler()
 {
 	waitForResult()
 		.then( result => {
+			console.table(result);
+			result = JSON.stringify(result)
+			//console.log(result);
 			data_field.value = result;
 			form.submit();
 		})
 }
 
+
 function waitForResult()
 {
 	return new Promise( (resolve, reject) => {
-		resolve(generateDaysJson(input.value));
+		let result = Array();
+		let id = 0;
+		for(let i = 2019; i < 2026; i++)
+		{
+			let response = generateDaysJson(i, id);
+			id += response[1];
+			result = result.concat(response[0]);
+		}
+		resolve(result);
 	});
 }
 

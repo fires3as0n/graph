@@ -6,12 +6,6 @@
 
 
 @section('content')
-	<h2>
-		{{ $month_name }}
-		{{ $year }}
-	</h2>
-
-
 	<div class="container">
 		<div class="row">
 			@for ($table=0; $table<sizeof($cells); $table++)
@@ -23,7 +17,7 @@
 									<td class="{{$cells[$table][$row][$column]['class']}}" @if ( array_key_exists("id", $cells[$table][$row][$column]) )                                        id="{{$cells[$table][$row][$column]["id"]}}"
 										@endif
 									>
-										{{$cells[$table][$row][$column]["data"]}}
+										{!! $cells[$table][$row][$column]["data"] !!}
 									</td>
 								@endfor
 							</tr>
@@ -54,11 +48,13 @@
 			<img src="/img/customday_button.png"/>
 		</div>
 	</div>
+
 @endsection
 
 @section('head_JS')
 	<script type="text/javascript">
-		window.users = {!! json_encode($users) !!}
+		window.users = {!! json_encode($users) !!};
+		window.csrf_token = "{{ csrf_token() }}";
 	</script>
 @endsection
 

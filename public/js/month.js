@@ -95,6 +95,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//import axios from 'axios';
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var days = document.querySelectorAll(".day.current, .day.not-current");
   days.forEach(function (day) {
@@ -167,12 +168,74 @@ __webpack_require__.r(__webpack_exports__);
     var match = day.id.match(regex);
     var user_id = match[0];
     var day_id = match[1];
-    ajax.open('POST', '/api/months', true);
+    ajax.open('POST', '/months', true); //ajax.setRequestHeader("Accept", "application/json");
+
     ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    ajax.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+    ajax.setRequestHeader("X-CSRF-TOKEN", window.csrf_token); //axios.defaults.headers.common = {
+    //	'X-Requested-With': 'XMLHttpRequest',
+    //	'X-CSRF-TOKEN': window.csrf_token,
+    //	'Authorisation': 'BearereyJpdiI6IjhlNXpsWmUrbzFBRzhsYkoxenE1eEE9PSIsInZhbHVlIjoiQmxmS0RxUXg5UituZ0FtektxR0pEMGRINll5Tk5rVnVUNzlHeERMREh3QVF3TGgrdGZTMzhkWUpnVzFXd2dmWVVnT3A0MXJJVzZpbExPdDBVZWR2QkE9PSIsIm1hYyI6Ijk0NDMwZjRiMGRhZDExNDdhNjE1MmYwMzBjZGM3ZDgyYmVkNDRlYjc5NWU4Nzg2ZGY4YzFiNzcxNjA4ZGNkZTkifQ%3D%3D'
+    //};
+    //axios.post(`/api/months?user_id=${user_id}&day_id=${day_id}&relation_type=${this.getAttribute('data-relation')}&payload=${payload}`)
+    //.then(response =>
+    //{
+    //	handleAxiosResponse(response.data);
+    //});
+
     ajax.send("user_id=".concat(user_id, "&day_id=").concat(day_id, "&relation_type=").concat(this.getAttribute('data-relation'), "&payload=").concat(payload));
   }
 
+  function handleAxiosResponse(response) {
+    console.log(response);
+    selector.style.display = "none";
+    day.classList.remove('clicked');
+    /*
+    If successfully added/deleted relation, change current day style according
+    to format that corresponds to its new relation status.
+    If relation was not added - log the database error (looks like should
+    be considered unsafe in production though)
+     */
+
+    var response_code;
+
+    try {
+      response_code = response[0];
+    } catch (e) {
+      console.error(e);
+      console.error(response);
+      return;
+    }
+
+    var relation_type = button.getAttribute('data-relation');
+
+    if (response_code == true) {
+      /*
+      First remove any extra classes that day can have, because when adding
+      new relation, the previous one is deleted
+       */
+      day.classList.remove('halfday');
+      day.classList.remove('offday');
+
+      if (relation_type == "offday") {
+        day.classList.add('offday');
+      } else if (relation_type == "halfday") {
+        day.classList.add('halfday');
+      }
+      /*
+      Payload is inserted directly from JS, the same one that was sent to the
+      server. Server does not respond with the payload it actually added, so
+      this can be a little error-prone, but reduces the amount of information
+      sent in AJAX API call.
+      */
+
+
+      day.textContent = payload;
+    }
+  }
+
   function handleResponse() {
+    //console.log(this.responseText);
     selector.style.display = "none";
     day.classList.remove('clicked');
     /*
@@ -329,7 +392,7 @@ Object(_Main_js__WEBPACK_IMPORTED_MODULE_1__["default"])();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/argos/Code/graph/resources/js/month.js */"./resources/js/month.js");
+module.exports = __webpack_require__(/*! E:\Code\Graph\resources\js\month.js */"./resources/js/month.js");
 
 
 /***/ })

@@ -1,4 +1,4 @@
-export default function generateDaysJson(year)
+export default function generateDaysJson(year, id)
 {
 	/*get local date*/
 	const now = new Date();
@@ -35,7 +35,7 @@ export default function generateDaysJson(year)
 		total_days += 1;
 		days_in_month[1] += 1;
 	}
-	const week_day_names = ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"];
+	const week_day_names = ["", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"];
 	const month_names = ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
 
 	let result = Array();
@@ -47,19 +47,17 @@ export default function generateDaysJson(year)
 			let obj = {};
 			let date = new Date(year, month, day+1, offset);
 
-			obj["id"] = iterator+1;
-			obj["day_in_week_number"] = date.getDay() + 1;
+			obj["id"] = id + iterator + 1;
+			obj["day_in_week_number"] = date.getDay() == 0 ? 7 : date.getDay();
 			obj["day_in_month_number"] = day+1;
-			obj["day_name"] = week_day_names[date.getDay()];
+			obj["day_name"] = week_day_names[obj["day_in_week_number"]];
 			obj["month_number"] = month + 1;
 			obj["month_name"] = month_names[month];
 			obj["year"] = year;
 
 			result[iterator] = obj;
-			//break;
 		}
-		//break;
 	}
-
-	return JSON.stringify(result);
+	//console.table(result);
+	return [result, result.length];
 }

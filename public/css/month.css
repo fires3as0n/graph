@@ -67,7 +67,7 @@
 
 @media (max-width: 576px) {
 	.day {
-		min-height: 20px;
+		min-height: 30px;
 		width: 50px;
 	}
 }

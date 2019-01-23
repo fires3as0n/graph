@@ -1,5 +1,11 @@
 @extends('layout')
 
+@php
+  $month_name = "";
+  $year = "";
+  $month_number = "";
+@endphp
+
 @section('content')
 <h4>This page generates database seed file for selected year</h4>
 

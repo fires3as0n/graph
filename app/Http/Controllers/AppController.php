@@ -10,9 +10,9 @@ class AppController extends Controller
 {
 	private $empty_day = [
 			"id" => "",
-			"day_in_month_number" => "",
+			"day_in_month_number" => "&nbsp;",
 			"day_in_week_number" => "",
-			"day_name" => "",
+			"day_name" => "&nbsp;",
 			"month_number" => "",
 			"month_name" => "",
 			"year" => "",
@@ -103,21 +103,40 @@ class AppController extends Controller
 		return $class;
 	}
 	
-	private function takeFromPrevious(&$days, $take_from_previous, $cur_month_number)
+	private function takeFromPrevious(&$days, $take_from_previous, $cur_month_number, $cur_year_number)
 	{
-		/* if first month of year, fill blank spaces instead of days
-		 (as multi-year graphic is beyond current implementation
+		/**
+		 * If first month of year, and left edge year, fill with blank days
 		*/
-		if ($cur_month_number == 1)
+		if ($cur_month_number == 1 && $cur_year_number == 2019)
 		{
 			for($i=0; $i<$take_from_previous; $i++)
 			{
 				array_push($days, $this->empty_day);
 			}
 		}
+		/**
+		 * If first month of year, but not left edge year, take last month of
+		 * previous year
+		 */
+		else if ($cur_month_number == 1)
+		{
+			$previous_month = GraphModel::pdoGetMonth($cur_year_number - 1, 12);
+			
+			/* slice from the end of array */
+			$taken = array_slice($previous_month, -$take_from_previous);
+			foreach ($taken as $day)
+			{
+				$day["type"] = "taken";
+				array_push($days, $day);
+			}
+		}
+		/**
+		 * If not first month of year, take days from previous month of this year
+		 */
 		else
 		{
-			$previous_month = GraphModel::pdoGetMonth($cur_month_number - 1);
+			$previous_month = GraphModel::pdoGetMonth($cur_year_number, $cur_month_number - 1);
 			
 			/* slice from the end of array */
 			$taken = array_slice($previous_month, -$take_from_previous);
@@ -129,22 +148,40 @@ class AppController extends Controller
 		}
 	}
 	
-	private function takeFromNext(&$days, $take_from_next, $cur_month_number)
+	private function takeFromNext(&$days, $take_from_next, $cur_month_number, $cur_year_number)
 	{
-		/*
-		 * If last month of year, fill blank spaces instead of days
-		 * (as multi-year graphic is beyond current implementation
+		/**
+		 * If last month of year, and right edge year, fill with blank days
 		*/
-		if ($cur_month_number == 12)
+		if ($cur_month_number == 12 && $cur_year_number == 2025)
 		{
 			for($i=0; $i<$take_from_next; $i++)
 			{
 				array_push($days, $this->empty_day);
 			}
 		}
+		/**
+		 * If last month of year, but not right edge year, take fist month of
+		 * next year
+		 */
+		else if ($cur_month_number == 12)
+		{
+			$previous_month = GraphModel::pdoGetMonth($cur_year_number + 1, 1);
+			
+			/* slice from the end of array */
+			$taken = array_slice($previous_month, - $take_from_next);
+			foreach ($taken as $day)
+			{
+				$day["type"] = "taken";
+				array_push($days, $day);
+			}
+		}
+		/**
+		 * If not last month of year, take days from next month of this year
+		 */
 		else
 		{
-			$next_month = GraphModel::pdoGetMonth($cur_month_number + 1);
+			$next_month = GraphModel::pdoGetMonth($cur_year_number, $cur_month_number + 1);
 			
 			/* slice from the start of array  by amount of days */
 			$taken = array_slice($next_month, 0, $take_from_next);
@@ -159,18 +196,20 @@ class AppController extends Controller
 	/* Controllers */
 	public function index()
 	{
-		$curr_month_number = (int)date('m');
-		return redirect("/months/$curr_month_number");
+		$cur_month_number = (int)date('m');
+		$cur_year_number = (int)date('Y');
+		return redirect("/$cur_year_number/$cur_month_number");
 	}
 	
-	public function show($cur_month_number)
+	public function show($cur_year_number, $cur_month_number)
 	{
-		$month = GraphModel::pdoGetMonth($cur_month_number); //dd($month);
+		$month = GraphModel::pdoGetMonth($cur_year_number, $cur_month_number); //dd($month);
 		$users = GraphModel::pdoGetAllUsers(); //dd($users);
 		$relations = GraphModel::pdoGetAllRelations(); //dd($relations);
 		
 		$month_name = $month[0]["month_name"]; //dd($month_name);
-		$year = $month[0]["year"];
+		$year = $cur_year_number;
+		$month_number = $cur_month_number;
 		
 		/* Populating days */
 		$days = [];
@@ -183,7 +222,7 @@ class AppController extends Controller
 		$take_from_previous = $month[0]["day_in_week_number"] - 1;
 		if ($take_from_previous > 0)
 		{
-			$this->takeFromPrevious($days, $take_from_previous, $cur_month_number);
+			$this->takeFromPrevious($days, $take_from_previous, $cur_month_number, $cur_year_number);
 		}
 
 		/* Handle days of current month */
@@ -201,7 +240,7 @@ class AppController extends Controller
 		$take_from_next = 42 - sizeof($days);
 		if ($take_from_next > 0)
 		{
-			$this->takeFromNext($days, $take_from_next, $cur_month_number);
+			$this->takeFromNext($days, $take_from_next, $cur_month_number, $cur_year_number);
 		}
 	
 		/*
@@ -217,7 +256,7 @@ class AppController extends Controller
 		
 		// dd($cells);
 		
-		return view('month', compact('cells', 'users', 'month_name', 'year'));
+		return view('month', compact('cells', 'users', 'month_name', 'year', 'month_number'));
 	}
 	
 	public function generate()
@@ -242,6 +281,8 @@ class AppController extends Controller
 	public function dayClicked(Request $request)
 	{
 
+		//echo $request;
+		//die();
 		//return var_dump($request->all());
 		$user_id = $request->all()['user_id'];
 		$day_id = $request->all()['day_id'];

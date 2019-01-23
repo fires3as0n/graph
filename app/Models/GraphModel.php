@@ -18,12 +18,13 @@ class GraphModel extends Model
 		return $data;
 	}
 	
-	public static function pdoGetMonth($month)
+	public static function pdoGetMonth($year, $month)
 	{
 		$db = app('PDO');
-		$query = "SELECT * FROM days WHERE month_number = :number";
+		$query = "SELECT * FROM days WHERE month_number = :number AND year = :year";
 		$statement = $db->prepare($query);
 		$statement->bindValue('number', $month);
+		$statement->bindValue('year', $year);
 		$statement->execute();
 		$data = $statement->fetchAll(); //dd($data);
 		return $data;
