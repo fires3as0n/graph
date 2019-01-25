@@ -6,8 +6,8 @@ Route::post('/months', 'AppController@dayClicked')->middleware('auth');
 
 Route::get('/settings', 'AppController@settings')->middleware('auth');
 
-Route::get('/generate', 'AppController@generate');
-Route::post('/generate', 'AppController@generateSubmitted');
+//Route::get('/generate', 'AppController@generate');
+//Route::post('/generate', 'AppController@generateSubmitted');
 
 /**
  * Invoked by: settings.blade.php

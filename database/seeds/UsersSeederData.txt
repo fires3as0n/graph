@@ -1,42 +1,50 @@
 [
 	{
 		"id": 1,
-		"name": "Торопов Юрий",
+		"name": "Аквамир",
 		"short_name": "Ю",
-		"email": "trobokek@example.com",
-		"password": 1234,
+		"email": "akvamir@example.com",
+		"password": "$2y$10$nAPd02A7adDOkvz8LTBwBOfiByXevSvBvkcN56jFRY1wVIw0eN8kK",
 		"has_image": 0
   },
-  {
+	{
 		"id": 2,
-		"name": "Воробьев Валентин",
-		"short_name": "В",
-		"email": "jral@example.com",
-		"password": 1234,
+		"name": "Торопов Юрий",
+		"short_name": "Ю",
+		"email": "toropov@example.com",
+		"password": "$2y$10$nAPd02A7adDOkvz8LTBwBOfiByXevSvBvkcN56jFRY1wVIw0eN8kK",
 		"has_image": 0
   },
   {
 		"id": 3,
-		"name": "Зализко Иван",
-		"short_name": "И",
-		"email": "sral@example.com",
-		"password": 1234,
+		"name": "Воробьев Валентин",
+		"short_name": "В",
+		"email": "vrobev@example.com",
+		"password": "$2y$10$nAPd02A7adDOkvz8LTBwBOfiByXevSvBvkcN56jFRY1wVIw0eN8kK",
 		"has_image": 0
   },
   {
 		"id": 4,
+		"name": "Зализко Иван",
+		"short_name": "И",
+		"email": "zalizko@example.com",
+		"password": "$2y$10$nAPd02A7adDOkvz8LTBwBOfiByXevSvBvkcN56jFRY1wVIw0eN8kK",
+		"has_image": 0
+  },
+  {
+		"id": 5,
 		"name": "Новиков Александр",
 		"short_name": "А",
-		"email": "eban@example.com",
+		"email": "novikov@example.com",
 		"password": "$2y$10$nAPd02A7adDOkvz8LTBwBOfiByXevSvBvkcN56jFRY1wVIw0eN8kK",
 		"has_image": 1
   },
   {
-		"id": 5,
+		"id": 6,
 		"name": "Зайцевский Дмитрий",
 		"short_name": "Д",
-		"email": "kek@example.com",
-		"password": 1234,
+		"email": "zaicevski@example.com",
+		"password": "$2y$10$nAPd02A7adDOkvz8LTBwBOfiByXevSvBvkcN56jFRY1wVIw0eN8kK",
 		"has_image": 0
 	}
 ]

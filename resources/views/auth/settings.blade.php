@@ -4,33 +4,26 @@
 	<link href="css/settings.css" rel="stylesheet">
 @endsection
 
-
 @section('content')
-
+{{--{{ dd(get_defined_vars()['__data']) }}--}}
 <div class="container">
 	<div class="row">
 
 		<div class="col-12 col-md-6">
 
-@if (session('info'))
-	<div class="row">
-		<div class="col-md-12">
-			<div class="alert alert-success alert-dismissible">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-				{{ session('info') }}
-			</div>
-		</div>
-	</div>
-@elseif (session('error'))
-	<div class="row">
-		<div class="col-md-12">
-			<div class="alert alert-danger alert-dismissible">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-				{{ session('error') }}
-			</div>
-		</div>
-	</div>
-@endif
+			@if (Session::get('form') == 1 && $errors->any())
+				<ul class="alert alert-danger alert-dismissible">
+				<button type="button" class="close" data-dismiss="alert">×</button>
+					@foreach($errors->all() as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+				</ul>
+			@elseif(Session::get('form') == 1 && Session::get('success'))
+				<ul class="alert alert-success alert-dismissible">
+				<button type="button" class="close" data-dismiss="alert">×</button>
+						<li>{{ Session::get('success') }}</li>
+				</ul>
+			@endif
 
 			<form class="form-settings" method="POST" action="settings/change-pass">
 
@@ -55,9 +48,25 @@
 
 				<button type="submit" class="btn btn-primary">Сменить пароль</button>
 			</form>
+
 		</div>
 
 		<div class="col-12 col-md-6">
+
+			@if (Session::get('form') == 2 && $errors->any())
+				<ul class="alert alert-danger alert-dismissible">
+				<button type="button" class="close" data-dismiss="alert">×</button>
+					@foreach($errors->all() as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+				</ul>
+			@elseif(Session::get('form') == 2 && Session::get('success'))
+				<ul class="alert alert-success alert-dismissible">
+				<button type="button" class="close" data-dismiss="alert">×</button>
+						<li>{{ Session::get('success') }}</li>
+				</ul>
+			@endif
+
 			<form class="form-settings" method="POST" action="settings/change-email">
 
 				<fieldset>
@@ -77,6 +86,7 @@
 
 				<button type="submit" class="btn btn-primary">Сменить E-Mail</button>
 				</form>
+
 		</div>
 
 	</div>

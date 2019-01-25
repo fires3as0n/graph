@@ -11,7 +11,7 @@ class GraphModel extends Model
 	public static function pdoGetAllUsers()
 	{
 		$db = app('PDO');
-		$query = "SELECT * FROM users WHERE id > 0";
+		$query = "SELECT id, name, short_name, has_image FROM users WHERE id > 1";
 		$statement = $db->prepare($query);
 		$statement->execute();
 		$data = $statement->fetchAll();
