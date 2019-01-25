@@ -2,7 +2,7 @@
 	{
 		"id": 1,
 		"name": "Аквамир",
-		"short_name": "Ю",
+		"short_name": "А",
 		"email": "akvamir@example.com",
 		"password": "$2y$10$nAPd02A7adDOkvz8LTBwBOfiByXevSvBvkcN56jFRY1wVIw0eN8kK",
 		"has_image": 0

@@ -7,8 +7,8 @@
 }
 
 .offday {
-	background-color: grey;
-	outline: 1px solid grey;
+	background-color: rgba(204, 204, 204, 1);
+	outline: 1px solid rgba(204, 204, 204, 1);
 	outline-offset: -1px;
 }
 .halfday {
@@ -83,7 +83,7 @@
 
 .day.current.offday:hover, .day.not-current.offday:hover {
 	outline: 3px solid cornflowerblue;
-	/*outline-offset: -1px;*/
+	outline-offset: -1px;
 }
 
 .clicked {
