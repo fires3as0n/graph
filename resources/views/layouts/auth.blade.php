@@ -24,7 +24,8 @@
 
 <!-- Styles -->
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<link href="css/auth.css" rel="stylesheet">
+<link href="{{ asset('css/layouts/auth.css') }}" rel="stylesheet">
+@yield('CSS')
 
 
 

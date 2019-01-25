@@ -14,9 +14,10 @@ const mix = require('laravel-mix');
 mix.js('resources/js/generate.js', 'public/js')
 	 .js('resources/js/month.js', 'public/js')
 	 .js('resources/js/app.js', 'public/js')
+	 .styles('resources/css/layouts/month.css', 'public/css/layouts/month.css')
+	 .styles('resources/css/layouts/auth.css', 'public/css/layouts/auth.css')
 	 .styles('resources/css/month.css', 'public/css/month.css')
-	 .styles('resources/css/layout.css', 'public/css/layout.css')
-	 .styles('resources/css/auth.css', 'public/css/auth.css')
+	 .styles('resources/css/settings.css', 'public/css/settings.css')
 	 .browserSync({
 	  	proxy: '127.0.0.1:8001',
 	  	open: false

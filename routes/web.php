@@ -9,7 +9,16 @@ Route::get('/settings', 'AppController@settings')->middleware('auth');
 Route::get('/generate', 'AppController@generate');
 Route::post('/generate', 'AppController@generateSubmitted');
 
-
+/**
+ * Invoked by: settings.blade.php
+ * Vars passed: new-pass, new-pass-again, old-pass
+ */
+Route::post('/settings/change-pass', 'SettingsController@changePassword');
+/**
+ * Invoked by: settings.blade.php
+ * Vars passed: new-email, old-pass
+ */
+Route::post('/settings/change-email', 'SettingsController@changeEmail');
 
 
 /* Manual Authorisation Routes */

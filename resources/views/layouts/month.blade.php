@@ -17,7 +17,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
 	<link rel="stylesheet" href="/fontawesome/css/all.css"/>
-	<link rel="stylesheet" href="/css/layout.css">
+	<link rel="stylesheet" href="/css/layouts/month.css">
 
 
 	@yield('CSS')

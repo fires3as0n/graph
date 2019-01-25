@@ -2,7 +2,8 @@
     "/js/app.js": "/js/app.js",
     "/js/generate.js": "/js/generate.js",
     "/js/month.js": "/js/month.js",
+    "/css/layouts/month.css": "/css/layouts/month.css",
+    "/css/layouts/auth.css": "/css/layouts/auth.css",
     "/css/month.css": "/css/month.css",
-    "/css/layout.css": "/css/layout.css",
-    "/css/auth.css": "/css/auth.css"
+    "/css/settings.css": "/css/settings.css"
 }

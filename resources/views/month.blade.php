@@ -1,4 +1,4 @@
-@extends('layout'){{--{{ dd($cells) }}--}}{{--{{ dd($related) }}--}}
+@extends('layouts.month'){{--{{ dd($cells) }}--}}{{--{{ dd($related) }}--}}
 
 @section('CSS')
 	<link rel="stylesheet" type="text/css" href="/css/month.css"/>

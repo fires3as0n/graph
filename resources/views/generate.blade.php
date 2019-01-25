@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.month')
 
 @php
   $month_name = "";
