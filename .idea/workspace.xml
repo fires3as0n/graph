@@ -9,8 +9,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ca40fea-a4b9-4679-b469-73e011b291a8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/layouts/auth.css" afterPath="$PROJECT_DIR$/public/css/layouts/auth.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/layouts/month.css" afterPath="$PROJECT_DIR$/public/css/layouts/month.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/month.css" afterPath="$PROJECT_DIR$/public/css/month.css" />
@@ -18,7 +16,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/generate.js" afterPath="$PROJECT_DIR$/public/js/generate.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/month.js" afterPath="$PROJECT_DIR$/public/js/month.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/css/month.css" afterPath="$PROJECT_DIR$/resources/css/month.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -251,7 +248,7 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="529">
-              <caret line="22" column="6" lean-forward="true" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -290,7 +287,7 @@
       <file leaf-file-name="AuthenticatesUsers.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
+            <state relative-caret-position="126">
               <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding />
             </state>
@@ -317,8 +314,8 @@
       <file leaf-file-name="month.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/css/month.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1336">
-              <caret line="132" column="9" lean-forward="false" selection-start-line="132" selection-start-column="9" selection-end-line="132" selection-end-column="9" />
+            <state relative-caret-position="-441">
+              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -810,11 +807,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="311014000" />
+    <option name="totallyTimeSpent" value="311299000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="811" y="0" width="1104" height="1138" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2297794" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -825,7 +821,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28279883" sideWeight="0.5036765" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28279883" sideWeight="0.5036765" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1012,10 +1008,10 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1548447746704" expanded="true" signature="73980:73997" ph="..." />
-            <marker date="1548447746704" expanded="true" signature="82834:82852" ph="..." />
-            <marker date="1548447746704" expanded="true" signature="82834:82865" ph="..." />
-            <marker date="1548447746704" expanded="true" signature="82834:82880" ph="..." />
+            <marker date="1548447747194" expanded="true" signature="73980:73997" ph="..." />
+            <marker date="1548447747194" expanded="true" signature="82834:82852" ph="..." />
+            <marker date="1548447747194" expanded="true" signature="82834:82865" ph="..." />
+            <marker date="1548447747194" expanded="true" signature="82834:82880" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1263,8 +1259,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/month.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1336">
-          <caret line="132" column="9" lean-forward="false" selection-start-line="132" selection-start-column="9" selection-end-line="132" selection-end-column="9" />
+        <state relative-caret-position="-441">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1327,7 +1323,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
+        <state relative-caret-position="126">
           <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding />
         </state>
@@ -1336,7 +1332,7 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="529">
-          <caret line="22" column="6" lean-forward="true" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
