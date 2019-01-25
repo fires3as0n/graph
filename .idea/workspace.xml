@@ -8,7 +8,18 @@
     <bookmark url="file://$PROJECT_DIR$/app/Http/Controllers/AppController.php" line="131" mnemonic="5" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ca40fea-a4b9-4679-b469-73e011b291a8" name="Default" comment="" />
+    <list default="true" id="8ca40fea-a4b9-4679-b469-73e011b291a8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/layouts/auth.css" afterPath="$PROJECT_DIR$/public/css/layouts/auth.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/layouts/month.css" afterPath="$PROJECT_DIR$/public/css/layouts/month.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/month.css" afterPath="$PROJECT_DIR$/public/css/month.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/settings.css" afterPath="$PROJECT_DIR$/public/css/settings.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/generate.js" afterPath="$PROJECT_DIR$/public/js/generate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/month.js" afterPath="$PROJECT_DIR$/public/js/month.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/css/month.css" afterPath="$PROJECT_DIR$/resources/css/month.css" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,8 +81,8 @@
       <file leaf-file-name=".env" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="14" />
+            <state relative-caret-position="437">
+              <caret line="19" column="18" lean-forward="false" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -147,7 +158,7 @@
       <file leaf-file-name="ShortNames.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/ShortNames.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
+            <state relative-caret-position="76">
               <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="29" />
               <folding />
             </state>
@@ -181,20 +192,6 @@
               <folding>
                 <element signature="e#2609#2644#0" expanded="false" />
                 <element signature="e#3429#4694#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="month.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/css/month.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="85" column="20" lean-forward="false" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
-              <folding>
-                <element signature="e#266#937#0" expanded="false" />
-                <marker date="1548444801981" expanded="true" signature="1583:1857" ph="..." />
-                <marker date="1548444801981" expanded="true" signature="1909:2080" ph="..." />
               </folding>
             </state>
           </provider>
@@ -250,11 +247,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VerifyCsrfToken.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="VerifyCsrfToken.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="529">
-              <caret line="21" column="11" lean-forward="true" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+              <caret line="22" column="6" lean-forward="true" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -300,6 +297,33 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="month.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/css/month.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="26" column="48" lean-forward="false" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+              <folding>
+                <element signature="e#541#634#0" expanded="false" />
+                <element signature="e#636#711#0" expanded="false" />
+                <element signature="e#744#788#0" expanded="false" />
+                <marker date="1548447716399" expanded="false" signature="368:475" ph="..." />
+                <marker date="1548447716399" expanded="true" signature="1188:1462" ph="..." />
+                <marker date="1548447716399" expanded="true" signature="1514:1685" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="month.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/month.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1336">
+              <caret line="132" column="9" lean-forward="false" selection-start-line="132" selection-start-column="9" selection-end-line="132" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -315,7 +339,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get</find>
       <find>getmon</find>
       <find>block</find>
       <find>function loggedOut</find>
@@ -345,6 +368,7 @@
       <find>These credentials do not match our records</find>
       <find>clicked</find>
       <find>clciked</find>
+      <find>halfday</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -363,7 +387,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/database/seeds/DaysSeederData.txt" />
         <option value="$PROJECT_DIR$/app/Providers/PdoProvider.php" />
         <option value="$PROJECT_DIR$/database/seeds/DaysTableSeeder.php" />
@@ -409,11 +432,12 @@
         <option value="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
         <option value="$PROJECT_DIR$/.env.example" />
         <option value="$PROJECT_DIR$/database/seeds/UsersSeederData.txt" />
-        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" />
         <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php" />
-        <option value="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" />
+        <option value="$PROJECT_DIR$/public/css/month.css" />
+        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/resources/css/month.css" />
+        <option value="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" />
       </list>
     </option>
   </component>
@@ -648,6 +672,23 @@
             <path>
               <item name="Graph" type="b2602c69:ProjectViewProjectNode" />
               <item name="Graph" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Graph" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Graph" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Graph" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Graph" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="img" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Graph" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Graph" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="storage" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -769,12 +810,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="308182000" />
+    <option name="totallyTimeSpent" value="311014000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="811" y="0" width="1104" height="1138" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27665442" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2297794" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944608" sideWeight="0.5036765" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -783,7 +825,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28279883" sideWeight="0.5036765" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28279883" sideWeight="0.5036765" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -970,10 +1012,10 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1548444860411" expanded="true" signature="73980:73997" ph="..." />
-            <marker date="1548444860411" expanded="true" signature="82162:82180" ph="..." />
-            <marker date="1548444860411" expanded="true" signature="82162:82193" ph="..." />
-            <marker date="1548444860411" expanded="true" signature="82162:82208" ph="..." />
+            <marker date="1548447746704" expanded="true" signature="73980:73997" ph="..." />
+            <marker date="1548447746704" expanded="true" signature="82834:82852" ph="..." />
+            <marker date="1548447746704" expanded="true" signature="82834:82865" ph="..." />
+            <marker date="1548447746704" expanded="true" signature="82834:82880" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1110,36 +1152,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/ShortNames.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/UsersTableSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/GraphModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="13" column="78" lean-forward="false" selection-start-line="13" selection-start-column="78" selection-end-line="13" selection-end-column="78" />
-          <folding>
-            <marker date="1548430356658" expanded="true" signature="191:252" ph="SELECT * FRO... users" />
-            <marker date="1548430356658" expanded="true" signature="191:253" ph="SELECT id, n... users" />
-            <marker date="1548430356658" expanded="true" signature="459:506" ph="SELECT * FRO... days" />
-            <marker date="1548430356658" expanded="true" signature="459:523" ph="SELECT * FRO... days" />
-            <marker date="1548430356658" expanded="true" signature="819:841" ph="SELECT * FRO... user_day" />
-            <marker date="1548430356658" expanded="true" signature="1081:1205" ph="INSERT INTO user_day... " />
-            <marker date="1548430356658" expanded="true" signature="1658:1729" ph="SELECT * FRO... user_day" />
-            <marker date="1548430356658" expanded="true" signature="2026:2095" ph="DELETE FROM " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1163,14 +1180,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" column="38" lean-forward="false" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/month.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="19" column="49" lean-forward="false" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
           <folding />
         </state>
       </provider>
@@ -1203,14 +1212,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
           <caret line="12" column="34" lean-forward="false" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -1260,19 +1261,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php">
+    <entry file="file://$PROJECT_DIR$/public/css/month.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="21" column="11" lean-forward="true" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+        <state relative-caret-position="1336">
+          <caret line="132" column="9" lean-forward="false" selection-start-line="132" selection-start-column="9" selection-end-line="132" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/month.css">
+    <entry file="file://$PROJECT_DIR$/app/Models/GraphModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-853">
-          <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+        <state relative-caret-position="232">
+          <caret line="13" column="78" lean-forward="false" selection-start-line="13" selection-start-column="78" selection-end-line="13" selection-end-column="78" />
+          <folding>
+            <marker date="1548430356658" expanded="true" signature="191:252" ph="SELECT * FRO... users" />
+            <marker date="1548430356658" expanded="true" signature="191:253" ph="SELECT id, n... users" />
+            <marker date="1548430356658" expanded="true" signature="459:506" ph="SELECT * FRO... days" />
+            <marker date="1548430356658" expanded="true" signature="459:523" ph="SELECT * FRO... days" />
+            <marker date="1548430356658" expanded="true" signature="819:841" ph="SELECT * FRO... user_day" />
+            <marker date="1548430356658" expanded="true" signature="1081:1205" ph="INSERT INTO user_day... " />
+            <marker date="1548430356658" expanded="true" signature="1658:1729" ph="SELECT * FRO... user_day" />
+            <marker date="1548430356658" expanded="true" signature="2026:2095" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="19" column="18" lean-forward="false" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/month.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="19" column="49" lean-forward="false" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/ShortNames.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/css/month.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="26" column="48" lean-forward="false" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+          <folding>
+            <element signature="e#541#634#0" expanded="false" />
+            <element signature="e#636#711#0" expanded="false" />
+            <element signature="e#744#788#0" expanded="false" />
+            <marker date="1548447716399" expanded="false" signature="368:475" ph="..." />
+            <marker date="1548447716399" expanded="true" signature="1188:1462" ph="..." />
+            <marker date="1548447716399" expanded="true" signature="1514:1685" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1284,15 +1333,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/css/month.css">
+    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="85" column="20" lean-forward="false" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
-          <folding>
-            <element signature="e#266#937#0" expanded="false" />
-            <marker date="1548444801981" expanded="true" signature="1583:1857" ph="..." />
-            <marker date="1548444801981" expanded="true" signature="1909:2080" ph="..." />
-          </folding>
+        <state relative-caret-position="529">
+          <caret line="22" column="6" lean-forward="true" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -7,54 +7,24 @@
 }
 
 .offday {
+	/*background-color: #dee2e6;*/
+
 	background-color: rgba(204, 204, 204, 1);
-	outline: 1px solid rgba(204, 204, 204, 1);
-	outline-offset: -1px;
+
+	/*outline: 1px solid rgba(204, 204, 204, 1);*/
+	/*outline-offset: -1px;*/
+
+	border: 1px solid rgba(204, 204, 204, 1) !important;
 }
 .halfday {
-	background: repeating-linear-gradient(
+	/*background: repeating-linear-gradient(
 		-45deg,
 		transparent,
 		transparent 8%,
 		grey 8%,
-		grey 10%,
-		transparent 10%,
-		transparent 18%,
-		grey 18%,
-		grey 20%,
-		transparent 20%,
-		transparent 28%,
-		grey 28%,
-		grey 30%,
-		transparent 30%,
-		transparent 38%,
-		grey 38%,
-		grey 40%,
-		transparent 40%,
-		transparent 48%,
-		grey 48%,
-		grey 50%,
-		transparent 50%,
-		transparent 58%,
-		grey 58%,
-		grey 60%,
-		transparent 60%,
-		transparent 68%,
-		grey 68%,
-		grey 70%,
-		transparent 70%,
-		transparent 78%,
-		grey 78%,
-		grey 80%,
-		transparent 80%,
-		transparent 88%,
-		grey 88%,
-		grey 90%,
-		transparent 90%,
-		transparent 98%,
-		grey 98%,
-		grey 100%
-	);
+		grey 10%
+	);*/
+	 background-image: url("/img/halfday_grey_bold.png");
 }
 
 .day {
@@ -82,8 +52,8 @@
 }
 
 .day.current.offday:hover, .day.not-current.offday:hover {
-	outline: 3px solid cornflowerblue;
-	outline-offset: -1px;
+	/*outline: 3px solid cornflowerblue;*/
+	/*outline-offset: -1px;*/
 }
 
 .clicked {
