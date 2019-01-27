@@ -48,6 +48,7 @@ export default function ()
 					}
 
 					/* Add fly-out listener */
+					namesHover();
 					fields[i][j].addEventListener('click', flyOut)
 				}
 				else
@@ -72,8 +73,25 @@ export default function ()
 			transformNames("name");
 	}
 
+	const flyout_css = ".user:hover {outline:2px solid cornflowerblue}";
+	let flyout_style_index;
+	let flyout_toggled = false;
+	function namesHover()
+	{
+		if (!flyout_toggled)
+		{
+		// console.log(document.styleSheets[2]);
+		flyout_style_index = document.styleSheets[2].insertRule(flyout_css, document.styleSheets[2].cssRules.length);
+		}
+		else
+		{
+			document.styleSheets[0].deleteRule(flyout_style_index)
+		}
+		flyout_toggled = !flyout_toggled;
+	}
+	
 	function flyOut()
 	{
-
+		
 	}
 }

@@ -354,6 +354,7 @@ __webpack_require__.r(__webpack_exports__);
           /* Add fly-out listener */
 
 
+          namesHover();
           fields[i][j].addEventListener('click', flyOut);
         } else {
           fields[i][j].removeAttribute("style");
@@ -371,6 +372,21 @@ __webpack_require__.r(__webpack_exports__);
   function handleNames() {
     //console.log(window.innerWidth);
     if (window.innerWidth < 880 && !shortened) transformNames("short_name");else if (window.innerWidth >= 880 && shortened) transformNames("name");
+  }
+
+  var flyout_css = ".user:hover {outline:2px solid cornflowerblue}";
+  var flyout_style_index;
+  var flyout_toggled = false;
+
+  function namesHover() {
+    if (!flyout_toggled) {
+      // console.log(document.styleSheets[2]);
+      flyout_style_index = document.styleSheets[2].insertRule(flyout_css, document.styleSheets[2].cssRules.length);
+    } else {
+      document.styleSheets[0].deleteRule(flyout_style_index);
+    }
+
+    flyout_toggled = !flyout_toggled;
   }
 
   function flyOut() {}
@@ -403,7 +419,7 @@ Object(_Main_js__WEBPACK_IMPORTED_MODULE_1__["default"])();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\Code\Graph\resources\js\month.js */"./resources/js/month.js");
+module.exports = __webpack_require__(/*! /home/argos/Code/graph/resources/js/month.js */"./resources/js/month.js");
 
 
 /***/ })
