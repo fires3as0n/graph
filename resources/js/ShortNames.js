@@ -29,10 +29,14 @@ export default function ()
 			{
 				if (!shortened)
 				{
+					/* Make styling */
 					fields[i][j].style.width = "35px";
 					fields[i][j].style.height = "35px";
 					fields[i][j].style.textAlign = "center";
-					//console.log(Number(users[i]["has_image"]));
+					fields[i][j].style.cursor = "pointer";
+					const hover = ".user:hover {outline}"
+
+					/* Apply short name / icon */
 					if ( Number(users[i]["has_image"]) )
 					{
 						fields[i][j].innerHTML =
@@ -42,11 +46,15 @@ export default function ()
 					{
 						fields[i][j].innerHTML = users[i][name_type];
 					}
+
+					/* Add fly-out listener */
+					fields[i][j].addEventListener('click', flyOut)
 				}
 				else
 				{
 					fields[i][j].removeAttribute("style");
 					fields[i][j].innerHTML = users[i][name_type];
+					fields[i][j].removeEventListener('click', flyOut);
 				}
 			}
 		}
@@ -62,5 +70,10 @@ export default function ()
 			transformNames("short_name");
 		else if (window.innerWidth >= 880 && shortened)
 			transformNames("name");
+	}
+
+	function flyOut()
+	{
+
 	}
 }
