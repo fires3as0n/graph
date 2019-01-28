@@ -1,5 +1,6 @@
 export default function ()
 {
+	"use strict";
 	const users = window.users;
 	//console.log(users);
 
@@ -8,14 +9,31 @@ export default function ()
 	{
 		ids.push("u" + user["id"]);
 	}
-	//console.log(ids);
 
 	let fields = [];
 	for (let id of ids)
 	{
-		fields.push(Array.from(document.querySelectorAll('.' + id)));
+		fields.push(Array.from(document.querySelectorAll('td.' + id)));
 	}
-	//console.log(fields);
+
+	/* Handle CSS that adds :hover to shortened names */
+
+	var flyout_toggled = false;
+	var flyout_css = ".user:hover {outline:2px solid cornflowerblue;}";
+	var flyout_style_index;
+
+	function namesHover()
+	{
+		if (!flyout_toggled)
+		{
+			flyout_style_index = document.styleSheets[3].insertRule(flyout_css, document.styleSheets[3].cssRules.length);
+		}
+		else
+		{
+			document.styleSheets[3].deleteRule(flyout_style_index)
+		}
+		flyout_toggled = !flyout_toggled;
+	}
 
 	let shortened = false;
 	if (window.innerWidth < 880)
@@ -23,6 +41,8 @@ export default function ()
 
 	function transformNames(name_type)
 	{
+		namesHover();
+
 		for (let i = 0; i < users.length; i++)
 		{
 			for (let j = 0; j < fields[i].length; j++)
@@ -48,7 +68,6 @@ export default function ()
 					}
 
 					/* Add fly-out listener */
-					namesHover();
 					fields[i][j].addEventListener('click', flyOut)
 				}
 				else
@@ -73,25 +92,41 @@ export default function ()
 			transformNames("name");
 	}
 
-	const flyout_css = ".user:hover {outline:2px solid cornflowerblue}";
-	let flyout_style_index;
-	let flyout_toggled = false;
-	function namesHover()
-	{
-		if (!flyout_toggled)
-		{
-		// console.log(document.styleSheets[2]);
-		flyout_style_index = document.styleSheets[2].insertRule(flyout_css, document.styleSheets[2].cssRules.length);
-		}
-		else
-		{
-			document.styleSheets[0].deleteRule(flyout_style_index)
-		}
-		flyout_toggled = !flyout_toggled;
-	}
-	
+
+
+	let prev_flyout;
 	function flyOut()
 	{
-		
+		const user_class = this.classList[0];
+		const long_name = document.querySelector(`div.${user_class}`);
+
+		if (prev_flyout == long_name)
+		{
+			prev_flyout = 0;
+			long_name.style.width = 0 + "px";
+			setTimeout( () => {
+				long_name.removeAttribute("style");
+			}, 690);
+			return
+		}
+		else if (!prev_flyout)
+		{
+			prev_flyout = long_name;
+		}
+
+		prev_flyout.removeAttribute("style");
+		prev_flyout = long_name;
+
+		const this_rect = this.getBoundingClientRect();
+		console.log(this_rect);
+
+		long_name.style.display = 'block';
+		long_name.style.top = this_rect.top - 2 + "px";
+		long_name.style.left = this_rect.left + 35 + "px";
+		setTimeout( () => {
+			long_name.style.width = "190px";
+		},1);
+
+
 	}
 }

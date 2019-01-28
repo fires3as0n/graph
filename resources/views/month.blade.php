@@ -1,5 +1,7 @@
 @extends('layouts.month'){{--{{ dd($cells) }}--}}{{--{{ dd($related) }}--}}
 
+{{--{{ dd(get_defined_vars()['__data']) }}--}}
+
 @section('CSS')
 	<link rel="stylesheet" type="text/css" href="/css/month.css"/>
 @endsection
@@ -14,7 +16,10 @@
 						@for ($row=0; $row<sizeof($cells[$table]); $row++)
 							<tr>
 								@for($column=0; $column < sizeof($cells[$table][$row]); $column++)
-									<td class="{{$cells[$table][$row][$column]['class']}}" @if ( array_key_exists("id", $cells[$table][$row][$column]) )                                        id="{{$cells[$table][$row][$column]["id"]}}"
+									<td
+										class="{{$cells[$table][$row][$column]['class']}}"
+										@if ( array_key_exists("id", $cells[$table][$row][$column]) )
+											id="{{$cells[$table][$row][$column]["id"]}}"
 										@endif
 									>
 										{!! $cells[$table][$row][$column]["data"] !!}
@@ -48,6 +53,14 @@
 			<img src="/img/customday_button.png"/>
 		</div>
 	</div>
+
+@foreach($users as $user)
+	<div
+		class="u{{$user['id']}} flyout"
+	>
+		<span>{{$user["name"]}}</span>
+	</div>
+@endforeach
 
 @endsection
 

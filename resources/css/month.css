@@ -144,3 +144,24 @@
 	background-color: #387fed;
 	border-color: #387fed;
 }
+
+div.flyout {
+	display: none;
+	width: 35px;
+	height: 39px;
+	overflow: hidden;
+	white-space: nowrap;
+	position: absolute;
+	border-right: 2px solid cornflowerblue;
+	border-top: 2px solid cornflowerblue;
+	border-bottom: 2px solid cornflowerblue;
+	transition: width .7s;
+	background-color: white;
+}
+
+div.flyout span {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 6px;
+  margin-left: 12px;
+}
