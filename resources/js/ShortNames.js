@@ -121,7 +121,7 @@ export default function ()
 		console.log(this_rect);
 
 		long_name.style.display = 'block';
-		long_name.style.top = this_rect.top - 2 + "px";
+		long_name.style.top = this_rect.top + window.scrollY - 2 + "px";
 		long_name.style.left = this_rect.left + 35 + "px";
 		setTimeout( () => {
 			long_name.style.width = "190px";
